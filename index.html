@@ -248,7 +248,19 @@
         }
 
         async function searchLead(){
-          axios.get(`https://api.copper.com/developer_api/v1/leads/search`, {
+          const response = await fetch(`https://api.copper.com/developer_api/v1/leads/search`, {
+            headers: {
+              "X-PW-AccessToken": "7e21736f08f9f849d2ba150babf3e335",
+              "X-PW-Application": "developer_api",
+              "X-PW-UserEmail": "clientaccess@connex.digital",
+              "Content-Type": "application/json"
+            },
+            method: "GET"
+          });
+
+          console.log(response.json());
+
+          /*await axios.get(`https://api.copper.com/developer_api/v1/leads/search`, {
             headers: {
               "X-PW-AccessToken": "7e21736f08f9f849d2ba150babf3e335",
               "X-PW-Application": "developer_api",
@@ -269,7 +281,7 @@
               lead_company.innerText = Object.values(response)[0].company_name;
               lead_phone.innerText = Object.values(response)[0].phone_numbers[0].number;
             }
-          }).catch(error => console.log(error));;
+          }).catch(error => console.log(error)); */
         }
     </script>
 </body>
